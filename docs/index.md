@@ -45,7 +45,7 @@ Learn more [about][] _Bioconductor_ and _AnVIL_.
   facilitate easy installation (via the [AnVIL package][] `install()`
   function).
 
-[_Bioconductor_ containers]: https://github.com/Bioconductor/bioconductor_full
+[_Bioconductor_ containers]: https://github.com/Bioconductor/AnVIL_Docker
 
 _Illustrative notebooks_
 
