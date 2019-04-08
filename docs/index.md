@@ -51,3 +51,14 @@ _Illustrative notebooks_
 
 - (available)
     - [Using Bioconductor's VCF processing stack](https://github.com/vjcitn/terravar/blob/master/Tiny%20population%20stratification%20display.ipynb) to demonstrate population stratification using a small slice of chr17 from the [new EBI 1000 genomes VCF](http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000_genomes_project/release/20190312_biallelic_SNV_and_INDEL/20190312_biallelic_SNV_and_INDEL_README.txt)
+
+_Shiny Apps_
+
+- (available)
+    - [TerraPlane](https://github.com/shwetagopaul92/TerraPlane): To help filter dockstore to find methods based on search term
+    
+_Kubernetes_
+
+- [Slides](https://docs.google.com/presentation/d/1Y7g_6X8I6DPaNK84EzWNo1wVpfAwdORGt6kcgcPYOV4/edit?usp=sharing)
+- Illustration of working with R and Kubernetes : https://github.com/shwetagopaul92/hgvarByKub
+
