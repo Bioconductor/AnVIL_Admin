@@ -61,4 +61,35 @@ _Kubernetes_
 
 - [Slides](https://docs.google.com/presentation/d/1Y7g_6X8I6DPaNK84EzWNo1wVpfAwdORGt6kcgcPYOV4/edit?usp=sharing)
 - Illustration of working with R and Kubernetes : https://github.com/shwetagopaul92/hgvarByKub
+- [k8s-redis-bioc-example][] An alternative approach: k8s with redis
+  work queue and BiocParallel functionality. The idea is to start a
+  number of parallel jobs on k8s, then an interactive 'manager'. The
+  end goal is that the user will start an R session (via RStudio, the
+  command line, Jupyter notebook) that is backed by multiple R
+  'workers' for parallel evaluation. The following (slightly
+  idealized) script shows that 13 seconds of sleep is distributed to 5
+  workers, hence accomplished in about 3 seconds.
 
+    ```
+    library(RedisParam)
+    fun = function(i, ...) {
+        Sys.sleep(1)
+        system("hostname", intern=TRUE)
+    }
+    
+    p <- RedisParam(
+        workers = 5, jobname = "demo", 
+        is.worker = FALSE
+    )
+    res <- bplapply(1:13, fun, BPPARAM = p)
+    
+    table(unlist(res))
+    ## five-worker-5ns79 five-worker-8gh5q 
+    ##                 2                 2
+    ## five-worker-dvdtv five-worker-wt5jq
+    ##                 3                 3
+    ## five-worker-zwlpw
+    ##                 3
+    ```
+
+[k8s-redis-bioc-example]: https://github.com/mtmorgan/k8s-redis-bioc-example
