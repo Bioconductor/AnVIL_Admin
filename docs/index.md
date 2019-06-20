@@ -22,9 +22,8 @@ Learn more [about][] _Bioconductor_ and _AnVIL_.
 - (available) Developer-oriented access to major AnVIL components (Terra,
   Leonardo, Dockstore, and Gen3) REST APIs.
   
-- (under development) Developer- and user-oriented facilities for
-  interacting with the Google cloud, e.g., `localize()`,
-  `delocalize()`, `sync()`.
+- Developer- and user-oriented facilities for interacting with the
+  Google cloud, e.g., `gsutil_*()`, `localize()`, `delocalize()`.
   
 - (under development) User-oriented facilities for package
   installation from precompiled binaries.
