@@ -88,3 +88,44 @@ _Kubernetes_
     ```
 
 [k8s-redis-bioc-example]: https://github.com/mtmorgan/k8s-redis-bioc-example
+
+_Data management utilities_
+
+- [R markdown for using terra to survey aspects of CCDG and CMG](basicData.Rmd)
+
+- Results as of 20 June 2019
+```
+## # A tibble: 10 x 3
+## # Groups:   study [2]
+##    study organ      N
+##    <chr> <chr>  <int>
+##  1 CCDG  AI      9031
+##  2 CCDG  CVD    25741
+##  3 CCDG  NP     19422
+##  4 CMG   Blood    277
+##  5 CMG   Brain   1844
+##  6 CMG   Eye      552
+##  7 CMG   Heart    184
+##  8 CMG   Kidney   432
+##  9 CMG   Muscle  1722
+## 10 CMG   Orphan   717
+```
+
+Drilling down on CCDG
+
+
+```
+## # A tibble: 9 x 4
+## # Groups:   study, organ [3]
+##   study organ addit         N
+##   <chr> <chr> <chr>     <int>
+## 1 CCDG  AI    Asthma     1171
+## 2 CCDG  AI    IBD        4694
+## 3 CCDG  AI    T1D        3166
+## 4 CCDG  CVD   AFib       3731
+## 5 CCDG  CVD   EOCAD     20156
+## 6 CCDG  CVD   HemStroke  1358
+## 7 CCDG  CVD   Stroke      496
+## 8 CCDG  NP    Alz        2374
+## 9 CCDG  NP    Autism    17048
+```

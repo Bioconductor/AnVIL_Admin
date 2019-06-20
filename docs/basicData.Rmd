@@ -1,0 +1,97 @@
+# Basic dataset sizes in AnVIL workspaces visible to AnVIL_Devs
+
+VJ Carey, BJ Stubbs
+
+
+
+```{r setup, echo=FALSE, results="hide"}
+suppressMessages({
+library(AnVIL)
+library(rjson)
+library(httr)
+library(tibble)
+library(dplyr)
+library(magrittr)
+})
+
+participantCount = function(studyTitle) {
+ types = httr::content(
+  terra$getEntityTypes("anvil-datastorage",
+    studyTitle))
+ types$participant$count
+}
+
+sampleAtts = function(studyTitle) {
+ atts = httr::content(
+  terra$getEntities(
+    "anvil-datastorage",
+    studyTitle,
+     "sample"))
+ atts
+}
+
+basicDataFrame = function() {
+  ws = AnVIL::terra$listWorkspaces()
+  wscon = content(ws, type="text/json") 
+  ww = fromJSON(wscon)
+  alln = sapply(ww, function(x) x$workspace$name)
+  anvnames = grep("AnVIL", alln, value=TRUE) -> anvnames
+  toks = strsplit(anvnames, "_")
+  stud = sapply(toks, "[", 2)
+  site = sapply(toks, "[", 3)
+  org = sapply(toks, "[", 4)
+  t5 = sapply(toks, "[", 5)
+  t6 = sapply(toks, "[", 6)
+  nums = lapply(anvnames, participantCount)
+  bad = which(sapply(nums, is.null))
+  if (length(bad)>0) {
+    nums[bad]=NA
+    nums = unlist(nums)
+    }
+  data.frame(study=stud, site=site, organ=org, 
+    N=nums, addit=t5, ext=t6, name=anvnames, 
+    stringsAsFactors=FALSE)
+}
+
+setClass("AnVILStudies",
+ representation(basic="data.frame"))
+AnVILStudies = function(dataframe) {
+ new("AnVILStudies", basic=dataframe) }
+setMethod("show", "AnVILStudies", function(object) {
+ print(as_tibble(object@basic))
+})
+#sa = sampleAtts("AnVIL_CCDG_WashU_CVD_EOCAD_Emerge_WGS")
+
+```
+
+```{r getbasic}
+basedf = basicDataFrame()
+```
+We are using the AnVIL package of Bioconductor to
+query and summarize the AnVIL workspaces.  There are
+`r nrow(basedf)` workspaces with 'AnVIL' as the
+leading substring of workspace name.
+
+```{r baic}
+as_tibble(basedf)
+```
+
+The number of samples is usually available in an
+attribute, but there are `r sum(is.na(basedf$N))`
+studies where this is not available.
+
+It is of interest to tabulate numbers of samples
+by anatomic organ.
+```{r byorg}
+as_tibble(basedf) %>% 
+  group_by(study, organ) %>% 
+  summarise(N=sum(N, na.rm=TRUE))
+```
+
+For CCDG we can partition a bit more finely.
+
+```{r doccd}
+basedf %>% filter(study=="CCDG") %>% 
+  group_by(study,organ,addit) %>% 
+  summarise(N=sum(N, na.rm=TRUE))
+```
