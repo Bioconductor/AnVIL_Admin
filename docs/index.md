@@ -1,4 +1,4 @@
-# Bioconductor / AnVIL 
+# _Bioconductor_ / _AnVIL_
 
 ## Project Activities
 
@@ -48,22 +48,28 @@ Learn more [about][] _Bioconductor_ and _AnVIL_.
 
 _Illustrative notebooks_
 
-- (available)
-    - [Using Bioconductor's VCF processing stack](https://github.com/vjcitn/terravar/blob/master/Tiny%20population%20stratification%20display.ipynb) to demonstrate population stratification using a small slice of chr17 from the [new EBI 1000 genomes VCF](http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000_genomes_project/release/20190312_biallelic_SNV_and_INDEL/20190312_biallelic_SNV_and_INDEL_README.txt)
+- (available) [Using Bioconductor's VCF processing stack][vcf stack]
+  to demonstrate population stratification using a small slice of
+  chr17 from the [new EBI 1000 genomes VCF][1kvcf].
+
+[vcf stack]: https://github.com/vjcitn/terravar/blob/master/Tiny%20population%20stratification%20display.ipynb
+[1kvcf]: http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000_genomes_project/release/20190312_biallelic_SNV_and_INDEL/20190312_biallelic_SNV_and_INDEL_README.txt
 
 _Shiny Apps_
 
-- (available)
-    - [TerraPlane](https://github.com/shwetagopaul92/TerraPlane): To help filter dockstore to find methods based on search term
+- (available) [TerraPlane][] to help filter dockstore to find methods
+  based on search term
     
+[TerraPlane]: https://github.com/shwetagopaul92/TerraPlane
+
 _Kubernetes_
 
 - [Slides](https://docs.google.com/presentation/d/1Y7g_6X8I6DPaNK84EzWNo1wVpfAwdORGt6kcgcPYOV4/edit?usp=sharing)
 - Illustration of working with R and Kubernetes : https://github.com/shwetagopaul92/hgvarByKub
-- [k8s-redis-bioc-example][] An alternative approach: k8s with redis
-  work queue and BiocParallel functionality. Start a number of
-  parallel jobs on k8s, then an interactive 'manager' (e.g., RStudio
-  session; Jupyter notebook).  Once in R one can
+- [k8sredis][] An alternative approach: k8s with redis work queue and
+  BiocParallel functionality. Start a number of parallel jobs on k8s,
+  then an interactive 'manager' (e.g., RStudio session; Jupyter
+  notebook).  Once in R one can
 
     ```
     library(RedisParam)
@@ -87,45 +93,45 @@ _Kubernetes_
     ##                 3
     ```
 
-[k8s-redis-bioc-example]: https://github.com/mtmorgan/k8s-redis-bioc-example
+[k8sredis]: https://github.com/Bioconductor/k8sredis
 
 _Data management utilities_
 
 - [R markdown for using terra to survey aspects of CCDG and CMG](basicData.Rmd)
 
 - Results as of 20 June 2019
-```
-## # A tibble: 10 x 3
-## # Groups:   study [2]
-##    study organ      N
-##    <chr> <chr>  <int>
-##  1 CCDG  AI      9031
-##  2 CCDG  CVD    25741
-##  3 CCDG  NP     19422
-##  4 CMG   Blood    277
-##  5 CMG   Brain   1844
-##  6 CMG   Eye      552
-##  7 CMG   Heart    184
-##  8 CMG   Kidney   432
-##  9 CMG   Muscle  1722
-## 10 CMG   Orphan   717
-```
+  ```
+  ## # A tibble: 10 x 3
+  ## # Groups:   study [2]
+  ##    study organ      N
+  ##    <chr> <chr>  <int>
+  ##  1 CCDG  AI      9031
+  ##  2 CCDG  CVD    25741
+  ##  3 CCDG  NP     19422
+  ##  4 CMG   Blood    277
+  ##  5 CMG   Brain   1844
+  ##  6 CMG   Eye      552
+  ##  7 CMG   Heart    184
+  ##  8 CMG   Kidney   432
+  ##  9 CMG   Muscle  1722
+  ## 10 CMG   Orphan   717
+  ```
+  
+  Drilling down on CCDG
 
-Drilling down on CCDG
-
-
-```
-## # A tibble: 9 x 4
-## # Groups:   study, organ [3]
-##   study organ addit         N
-##   <chr> <chr> <chr>     <int>
-## 1 CCDG  AI    Asthma     1171
-## 2 CCDG  AI    IBD        4694
-## 3 CCDG  AI    T1D        3166
-## 4 CCDG  CVD   AFib       3731
-## 5 CCDG  CVD   EOCAD     20156
-## 6 CCDG  CVD   HemStroke  1358
-## 7 CCDG  CVD   Stroke      496
-## 8 CCDG  NP    Alz        2374
-## 9 CCDG  NP    Autism    17048
-```
+  ```
+  ## # A tibble: 9 x 4
+  ## # Groups:   study, organ [3]
+  ##   study organ addit         N
+  ##   <chr> <chr> <chr>     <int>
+  ## 1 CCDG  AI    Asthma     1171
+  ## 2 CCDG  AI    IBD        4694
+  ## 3 CCDG  AI    T1D        3166
+  ## 4 CCDG  CVD   AFib       3731
+  ## 5 CCDG  CVD   EOCAD     20156
+  ## 6 CCDG  CVD   HemStroke  1358
+  ## 7 CCDG  CVD   Stroke      496
+  ## 8 CCDG  NP    Alz        2374
+  ## 9 CCDG  NP    Autism    17048
+  ```
+  
