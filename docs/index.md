@@ -44,6 +44,18 @@ Learn more [about][] _Bioconductor_ and _AnVIL_.
   facilitate easy installation (via the [AnVIL package][] `install()`
   function).
 
+- (available Q3) The latest terra-jupyter-bioconductor docker
+  containers are available on the [Google Container registry][gcr].
+  These containers have the Bioconductor release version 3.9, and 
+  R version 3.6 on jupyter notebooks. They work like the bioconductor_full images,
+  with the capability to install 'all of' the bioconductor packages.
+  This image has been tested on Leonardo and installs all but 31 packages in
+  Bioconductor release 3.9. The github link for this work is [terra-docker][].
+  
+[gcr]: https://console.cloud.google.com/gcr/images/broad-dsp-gcr-public/US/terra-jupyter-bioconductor
+
+[terra-docker]: https://github.com/DataBiosphere/terra-docker/tree/master/terra-jupyter-bioconductor
+
 [_Bioconductor_ containers]: https://github.com/Bioconductor/AnVIL_Docker
 
 _Illustrative notebooks_
