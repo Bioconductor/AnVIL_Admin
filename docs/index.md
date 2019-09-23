@@ -58,14 +58,32 @@ Learn more [about][] _Bioconductor_ and _AnVIL_.
 
 [_Bioconductor_ containers]: https://github.com/Bioconductor/AnVIL_Docker
 
+_terra workspaces/workflows_
+
+- (available) [A 'public' workspace for pan-cancer 
+transcriptome surveys][pancanlink].  This workspace includes two
+workflows, each devoted to different gene sets.  The WDL
+and associated scripts are [registered][dockstorelink] at dockstore.org.
+Unit testing for the script components is managed in the
+Bioconductor [BiocOncoTK package (developer repo)][vjconcohub].
+
+[pancanlink]: https://app.terra.bio/#workspaces/landmarkanvil2/pancan_tx_public
+[dockstorelink]: https://dockstore.org/workflows/github.com/vjcitn/BiocOncoTK/msireg1:master?tab=info
+[vjconcohub]: https://github.com/vjcitn/BiocOncoTK/blob/master/tests/testthat/test_dockstore_scripts.R
+
 _Illustrative notebooks_
 
 - (available) [Using Bioconductor's VCF processing stack][vcf stack]
   to demonstrate population stratification using a small slice of
   chr17 from the [new EBI 1000 genomes VCF][1kvcf].
 
-[vcf stack]: https://github.com/vjcitn/terravar/blob/master/Tiny%20population%20stratification%20display.ipynb
+- (available) [Using dockstore+terra for pancancer transcriptomics][pancantx]
+to compare relationships between gene expression and stratified
+or continuous measures of microsatellite instability in 33 TCGA tumor types.
+
+[vcf stack]: https://nbviewer.jupyter.org/github/vjcitn/terravar/blob/master/Tiny%20population%20stratification%20display.ipynb
 [1kvcf]: http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000_genomes_project/release/20190312_biallelic_SNV_and_INDEL/20190312_biallelic_SNV_and_INDEL_README.txt
+[pancantx]: https://nbviewer.jupyter.org/github/vjcitn/terravar/blob/master/trimmedMondaySep16.ipynb
 
 _Shiny Apps_
 
