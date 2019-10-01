@@ -14,23 +14,16 @@ Learn more [about][] _Bioconductor_ and _AnVIL_.
 
 ## Current activities
 
-[AnVIL package][]
-
-- This _R_ package currently provides both developer-oriented and
-  user-oriented AnVIL-specific functionality.
-  
-- (available) Developer-oriented access to major AnVIL components (Terra,
-  Leonardo, Dockstore, and Gen3) REST APIs.
-  
-- Developer- and user-oriented facilities for interacting with the
-  Google cloud, e.g., `gsutil_*()`, `localize()`, `delocalize()`.
-  
-- (under development) User-oriented facilities for package
-  installation from precompiled binaries.
-
-[AnVIL package]: https://github.com/Bioconductor/AnVIL
-
 [_Bioconductor_ containers][]
+
+- (available) The latest terra-jupyter-bioconductor docker containers
+  are available on the [Google Container registry][gcr].  These
+  containers have the Bioconductor release version 3.9, and R version
+  3.6 on jupyter notebooks. They work like the bioconductor_full
+  images, with the capability to install 'all of' the _Bioconductor_
+  packages.  This image has been tested on Leonardo and installs all
+  but 31 packages in _Bioconductor_ release 3.9. The github link for
+  this work is [terra-docker][].
 
 - (available) These Docker containers provide the system dependencies (e.g.,
   software libraries) to install 'all of' _Bioconductor_. The
@@ -43,14 +36,6 @@ Learn more [about][] _Bioconductor_ and _AnVIL_.
   support this repository (as folders in google buckets) and to
   facilitate easy installation (via the [AnVIL package][] `install()`
   function).
-
-- (available Q3) The latest terra-jupyter-bioconductor docker
-  containers are available on the [Google Container registry][gcr].
-  These containers have the Bioconductor release version 3.9, and 
-  R version 3.6 on jupyter notebooks. They work like the bioconductor_full images,
-  with the capability to install 'all of' the bioconductor packages.
-  This image has been tested on Leonardo and installs all but 31 packages in
-  Bioconductor release 3.9. The github link for this work is [terra-docker][].
   
 [gcr]: https://console.cloud.google.com/gcr/images/broad-dsp-gcr-public/US/terra-jupyter-bioconductor
 
@@ -58,14 +43,32 @@ Learn more [about][] _Bioconductor_ and _AnVIL_.
 
 [_Bioconductor_ containers]: https://github.com/Bioconductor/AnVIL_Docker
 
+[AnVIL package][]
+
+- This _R_ package currently provides both developer-oriented and
+  user-oriented AnVIL-specific functionality.
+  
+- (available) Developer-oriented access to major AnVIL components
+  (Terra, Leonardo, Dockstore, and Gen3) REST APIs. Bearer-token
+  authentication requires gcloud sdk installation.
+  
+- (available) Developer- and user-oriented facilities for interacting
+  with the Google cloud, e.g., `gsutil_*()`, `localize()`,
+  `delocalize()`.
+  
+- (under development) User-oriented facilities for package
+  installation from precompiled binaries.
+
+[AnVIL package]: https://github.com/Bioconductor/AnVIL
+
 _terra workspaces/workflows_
 
-- (available) [A 'public' workspace for pan-cancer 
-transcriptome surveys][pancanlink].  This workspace includes two
-workflows, each devoted to different gene sets.  The WDL
-and associated scripts are [registered][dockstorelink] at dockstore.org.
-Unit testing for the script components is managed in the
-Bioconductor [BiocOncoTK package (developer repo)][vjconcohub].
+- (available) [A 'public' workspace for pan-cancer transcriptome
+  surveys][pancanlink].  This workspace includes two workflows, each
+  devoted to different gene sets.  The WDL and associated scripts are
+  [registered][dockstorelink] at dockstore.org.  Unit testing for the
+  script components is managed in the Bioconductor [BiocOncoTK package
+  (developer repo)][vjconcohub].
 
 [pancanlink]: https://app.terra.bio/#workspaces/landmarkanvil2/pancan_tx_public
 [dockstorelink]: https://dockstore.org/workflows/github.com/vjcitn/BiocOncoTK/msireg1:master?tab=info
@@ -164,4 +167,3 @@ _Data management utilities_
   ## 8 CCDG  NP    Alz        2374
   ## 9 CCDG  NP    Autism    17048
   ```
-  
