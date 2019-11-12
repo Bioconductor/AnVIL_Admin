@@ -80,7 +80,7 @@ _Terra_ workspaces / workflows
 [dockstorelink]: https://dockstore.org/workflows/github.com/vjcitn/BiocOncoTK/msireg1:master?tab=info
 [vjconcohub]: https://github.com/vjcitn/BiocOncoTK/blob/master/tests/testthat/test_dockstore_scripts.R
 
-_Illustrative notebooks
+Illustrative notebooks
 
 - (proof-of-principle) [Using Bioconductor's VCF processing stack][vcf stack]
   to demonstrate population stratification using a small slice of
