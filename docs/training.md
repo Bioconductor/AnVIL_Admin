@@ -10,4 +10,4 @@ documentation][AnVIL-docs] resources.
 
 - [Placeholder][]
 
-[Placeholder]: /training/placeholder.md
+[Placeholder]: ./training/placeholder.md
