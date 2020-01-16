@@ -3,150 +3,81 @@
 ## Project Activities
 
 This site summarizes ongoing [_Bioconductor_][] development activities
-related to [_AnVIL_][]. **Note**: All resources on this page are under
+related to [_AnVIL_][]. **Note**: All resources listed are under
 development.
 
 Learn more [about][] _Bioconductor_ and _AnVIL_.
 
-[_Bioconductor_]: https://bioconductor.org
-[_AnVIL_]: https://www.genome.gov/27569268/genomic-analysis-visualization-and-informatics-labspace-anvil/
-[about]: /AnVIL_Admin/about
 
-## Current activities
+## Project Activities Overview
 
-_Bioconductor_ containers
+- [Available Now](#now)
+- [In Progress](#inprogress)
+- [Future](#future)
+- [Details](#details)
 
-- (available) The latest terra-jupyter-bioconductor docker containers
+<a name="now"></a>
+### Available Now
+
+- terra-jupyter-bioconductor docker container with current _Bioconductor_
+  Release 3.10 availablity. 
+
+<a name="inprogress"></a>
+### In Progress
+
+- terra-rstudio-bioconductor docker container with current _Bioconductor_
+  Release. 
+- [AnVIL package][] to provide both developer-oriented and user-oriented
+  AnVIL-specific functionality.
+- AnVIL / _Bioconductor_ oriented workshops
+- Continued development of [Training Materials][]
+
+
+<a name="future"></a>
+### Future
+
+- _Kubernetes_ support for _Bioconductor_ in AnVIL
+- User tool for instrumentation analysis. Cost estimation of RAM, disk, time,
+  etc. 
+
+
+
+<a name="details"></a>
+## Project Activities --  Detailed
+
+This section will provide a more detailed description of projects. 
+
+- [Containers](#containers)
+- [Developer / User Tools](#tools)
+
+<a name="containers"></a>
+### Containers
+
+- Jupyter notebook / _Bioconductor_
+
+  - The latest terra-jupyter-bioconductor docker containers
   are available at [AnVIL][] and on the [Google Container
   registry][gcr].  These containers have the Bioconductor release
-  version 3.9, and R version 3.6 on jupyter notebooks. They work like
-  the [bioconductor_full][] images, with the capability to install 'all
+  version 3.10, and R version 3.6 on jupyter notebooks. They work like
+  the [bioconductor_docker][] images, with the capability to install 'all
   of' the _Bioconductor_ packages.  This image has been tested on
   Leonardo and installs all but 31 packages in _Bioconductor_ release
-  3.9. The github link for this work is [terra-docker][]; use issues
+  3.10. The github link for this work is [terra-docker][]; use issues
   on the [_Bioconductor_ fork][bioconductor-terra-docker] for _R_ /
   _Bioconductor_ content.
 
-- (available) These Docker containers provide the system dependencies (e.g.,
-  software libraries) to install 'all of' _Bioconductor_. The
-  containers can be used locally or deployed in the _AnVIL_ /
-  _Leonardo_ application.
+- RStudio / _Bioconductor_ 
 
-- (under development) Because the software environment is fixed by the
-  container, packages can be pre-built and rapidly installed simply by
-  copying from an online repository. We are developing the tooling to
-  support this repository (as folders in google buckets) and to
-  facilitate easy installation (via the [AnVIL package][] `install()`
-  function).
+  - The terra-rstudio-bioconductor docker container is currenly available as a
+  custom 'bring your own' image to terra while work on a fully integrated
+  RStudio environment is being developed.  
 
-[AnVIL]: https://anvil.terra.app
 
-[gcr]: https://console.cloud.google.com/gcr/images/broad-dsp-gcr-public/US/terra-jupyter-bioconductor
+- _Kubernetes_
 
-[bioconductor_full]: https://github.com/Bioconductor/bioconductor_full
-
-[terra-docker]: https://github.com/DataBiosphere/terra-docker/tree/master/terra-jupyter-bioconductor
-
-[bioconductor-terra-docker]: https://github.com/Bioconductor/terra-docker
-
-[AnVIL package][]
-
-- This _R_ package currently provides both developer-oriented and
-  user-oriented AnVIL-specific functionality.
-
-- (available) Developer-oriented access to major AnVIL components
-  (Terra, Leonardo, Dockstore, and Gen3) REST APIs. Bearer-token
-  authentication requires gcloud sdk installation.
-
-- (available) Developer- and user-oriented facilities for interacting
-  with the Google cloud, e.g., `gsutil_*()`, `localize()`,
-  `delocalize()`.
-
-- (under development) User-oriented facilities for package
-  installation from precompiled binaries.
-
-[AnVIL package]: https://github.com/Bioconductor/AnVIL
-
-_Terra_ workspaces / workflows
-
-- (proof-of-principle) A workspace for [pan-cancer transcriptome
-  surveys][pancanlink].  This workspace includes two workflows, each
-  devoted to different gene sets.  The WDL and associated scripts are
-  [registered][dockstorelink] at dockstore.org.  Unit testing for the
-  script components is managed in the Bioconductor [BiocOncoTK
-  package][vjconcohub] (developer repo).
-
-[pancanlink]: https://app.terra.bio/#workspaces/landmarkanvil2/pancan_tx_public
-[dockstorelink]: https://dockstore.org/workflows/github.com/vjcitn/BiocOncoTK/msireg1:master?tab=info
-[vjconcohub]: https://github.com/vjcitn/BiocOncoTK/blob/master/tests/testthat/test_dockstore_scripts.R
-
-Illustrative notebooks
-
-- (proof-of-principle) [Using Bioconductor's VCF processing stack][vcf stack]
-  to demonstrate population stratification using a small slice of
-  chr17 from the [new EBI 1000 genomes VCF][1kvcf].
-
-- (proof-of-principle) [Using dockstore+terra for pancancer
-  transcriptomics][pancantx] to compare relationships between gene
-  expression and stratified or continuous measures of microsatellite
-  instability in 33 TCGA tumor types.
-
-[vcf stack]: https://nbviewer.jupyter.org/github/vjcitn/terravar/blob/master/Tiny%20population%20stratification%20display.ipynb
-[1kvcf]: http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000_genomes_project/release/20190312_biallelic_SNV_and_INDEL/20190312_biallelic_SNV_and_INDEL_README.txt
-[pancantx]: https://nbviewer.jupyter.org/github/vjcitn/terravar/blob/master/trimmedMondaySep16.ipynb
-
-Data management utilities
-
-- _R_ markdown for [using terra to survey CCDG and CMG](basicData.Rmd)
-
-- Results as of 20 June 2019
-  ```
-  ## # A tibble: 10 x 3
-  ## # Groups:   study [2]
-  ##    study organ      N
-  ##    <chr> <chr>  <int>
-  ##  1 CCDG  AI      9031
-  ##  2 CCDG  CVD    25741
-  ##  3 CCDG  NP     19422
-  ##  4 CMG   Blood    277
-  ##  5 CMG   Brain   1844
-  ##  6 CMG   Eye      552
-  ##  7 CMG   Heart    184
-  ##  8 CMG   Kidney   432
-  ##  9 CMG   Muscle  1722
-  ## 10 CMG   Orphan   717
-  ```
-
-  Drilling down on CCDG
-
-  ```
-  ## # A tibble: 9 x 4
-  ## # Groups:   study, organ [3]
-  ##   study organ addit         N
-  ##   <chr> <chr> <chr>     <int>
-  ## 1 CCDG  AI    Asthma     1171
-  ## 2 CCDG  AI    IBD        4694
-  ## 3 CCDG  AI    T1D        3166
-  ## 4 CCDG  CVD   AFib       3731
-  ## 5 CCDG  CVD   EOCAD     20156
-  ## 6 CCDG  CVD   HemStroke  1358
-  ## 7 CCDG  CVD   Stroke      496
-  ## 8 CCDG  NP    Alz        2374
-  ## 9 CCDG  NP    Autism    17048
-  ```
-
-_Shiny Apps_
-
-- (available) [TerraPlane][] to help filter dockstore to find methods
-  based on search term
-
-[TerraPlane]: https://github.com/shwetagopaul92/TerraPlane
-
-_Kubernetes_
-
-- [Slides](https://docs.google.com/presentation/d/1Y7g_6X8I6DPaNK84EzWNo1wVpfAwdORGt6kcgcPYOV4/edit?usp=sharing)
-- Illustration of working with R and Kubernetes : https://github.com/shwetagopaul92/hgvarByKub
-- [k8sredis][] An alternative approach: k8s with redis work queue and
+  - [Slides](https://docs.google.com/presentation/d/1Y7g_6X8I6DPaNK84EzWNo1wVpfAwdORGt6kcgcPYOV4/edit?usp=sharing)
+  - Illustration of working with R and Kubernetes : https://github.com/shwetagopaul92/hgvarByKub
+  - [k8sredis][] An alternative approach: k8s with redis work queue and
   BiocParallel functionality. Start a number of parallel jobs on k8s,
   then an interactive 'manager' (e.g., RStudio session; Jupyter
   notebook).  Once in R one can
@@ -173,4 +104,34 @@ _Kubernetes_
     ##                 3
     ```
 
+<a name="tools"></a>
+### Developer / User Tools
+
+- [AnVIL package][]
+
+  - This _R_ package currently provides both developer-oriented and
+  user-oriented AnVIL-specific functionality.
+  - (available) Developer-oriented access to major AnVIL components
+  (Terra, Leonardo, Dockstore, and Gen3) REST APIs. Bearer-token
+  authentication requires gcloud sdk installation. Work on expanding
+  and implemented additional REST APIs in on-going.
+  - (available) Developer- and user-oriented facilities for interacting with the
+    Google cloud, e.g., `gsutil_*()`, `localize()`, `delocalize()`.
+  - (under development) Because the software environment is fixed by the
+  container, packages can be pre-built and rapidly installed simply by copying
+  from an online repository. We are developing the tooling to support this
+  repository (as folders in google buckets) and to facilitate easy installation
+  (via the [AnVIL package][] `install()` function).
+
+
+[_Bioconductor_]: https://bioconductor.org
+[_AnVIL_]: https://www.genome.gov/27569268/genomic-analysis-visualization-and-informatics-labspace-anvil/
+[about]: about
+[AnVIL package]: https://github.com/Bioconductor/AnVIL
+[Training Materials]: training
+[AnVIL]: https://anvil.terra.app
+[gcr]: https://console.cloud.google.com/gcr/images/broad-dsp-gcr-public/US/terra-jupyter-bioconductor
+[bioconductor_docker]: https://github.com/Bioconductor/bioconductor_docker
+[terra-docker]: https://github.com/DataBiosphere/terra-docker/tree/master/terra-jupyter-bioconductor
+[bioconductor-terra-docker]: https://github.com/Bioconductor/terra-docker
 [k8sredis]: https://github.com/Bioconductor/k8sredis
