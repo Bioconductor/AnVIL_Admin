@@ -8,10 +8,21 @@ documentation][AnVIL-docs] resources.
 
 [AnVIL-docs]: https://support.terra.bio/hc/en-us
 
+- [Workshops](#workshops)
 - [_Terra_ workspaces / workflows](#workspaces)
-- [Notebooks](#notebooks) 
+- [Notebooks](#notebooks)
 - [Dockstore](#dockstore)
 - [Other](#other)
+
+<a name="workshops"></a>
+### Workshops
+
+- [Terra in the Classroom][]
+
+  - Documentation on running a small course utilizing AnVIL. This includes some
+    set up information as well as the learned positives and negatives as of
+    February 2020.
+
 
 <a name="workspaces"></a>
 ### _Terra_ Workspaces / Workflows
@@ -50,11 +61,15 @@ documentation][AnVIL-docs] resources.
 <a name="other"></a>
 ### Other
 
+- Shiny Apps
+
+  - [TerraPlane][] to help filter dockstore to find methods based on search term
+
 - Data management utilies
 
   - _R_ markdown for [using terra to survey CCDG and
     CMG](training/basicData.Rmd)
-	
+
 	- Results as of 20 June 2019
   ```
   ## # A tibble: 10 x 3
@@ -89,8 +104,6 @@ documentation][AnVIL-docs] resources.
   ## 8 CCDG  NP    Alz        2374
   ## 9 CCDG  NP    Autism    17048
   ```
-- Shiny Apps
-
-  - [TerraPlane][] to help filter dockstore to find methods based on search term
 
 [TerraPlane]: https://github.com/shwetagopaul92/TerraPlane
+[Terra in the Classroom]: https://docs.google.com/presentation/d/1AvEt6UIIx-G5eTe4hlfkGOYsUcSQrKx8ySlnnfg7XH8/edit?usp=sharing

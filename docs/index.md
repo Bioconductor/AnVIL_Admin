@@ -20,32 +20,34 @@ Learn more [about][] _Bioconductor_ and _AnVIL_.
 ### Available Now
 
 - terra-jupyter-bioconductor docker container with current _Bioconductor_
-  Release 3.10 availablity. 
+  Release 3.10 availablity.
 
 <a name="inprogress"></a>
 ### In Progress
 
 - terra-rstudio-bioconductor docker container with current _Bioconductor_
-  Release. 
+  Release.
 - [AnVIL package][] to provide both developer-oriented and user-oriented
   AnVIL-specific functionality.
 - AnVIL / _Bioconductor_ oriented workshops
+  - [BCC 2020][] (proposed - awaiting voting results)
+  - [Bioc 2020][] (submission in progress)
 - Continued development of [Training Materials][]
+- User tool for instrumentation analysis. Cost estimation of RAM, disk, time,
+  etc.
 
 
 <a name="future"></a>
 ### Future
 
 - _Kubernetes_ support for _Bioconductor_ in AnVIL
-- User tool for instrumentation analysis. Cost estimation of RAM, disk, time,
-  etc. 
 
 
 
 <a name="details"></a>
 ## Project Activities --  Detailed
 
-This section will provide a more detailed description of projects. 
+This section will provide a more detailed description of projects.
 
 - [Containers](#containers)
 - [Developer / User Tools](#tools)
@@ -66,11 +68,11 @@ This section will provide a more detailed description of projects.
   on the [_Bioconductor_ fork][bioconductor-terra-docker] for _R_ /
   _Bioconductor_ content.
 
-- RStudio / _Bioconductor_ 
+- RStudio / _Bioconductor_
 
   - The terra-rstudio-bioconductor docker container is currenly available as a
   custom 'bring your own' image to terra while work on a fully integrated
-  RStudio environment is being developed.  
+  RStudio environment is being developed.
 
 
 - _Kubernetes_
@@ -85,13 +87,13 @@ This section will provide a more detailed description of projects.
     ```
     library(RedisParam)
     fun = function(i, ...) {
-        Sys.sleep(1)
-        system("hostname", intern=TRUE)
+	Sys.sleep(1)
+	system("hostname", intern=TRUE)
     }
 
     p <- RedisParam(
-        workers = 5, jobname = "demo",
-        is.worker = FALSE
+	workers = 5, jobname = "demo",
+	is.worker = FALSE
     )
     res <- bplapply(1:13, fun, BPPARAM = p)
 
@@ -135,3 +137,5 @@ This section will provide a more detailed description of projects.
 [terra-docker]: https://github.com/DataBiosphere/terra-docker/tree/master/terra-jupyter-bioconductor
 [bioconductor-terra-docker]: https://github.com/Bioconductor/terra-docker
 [k8sredis]: https://github.com/Bioconductor/k8sredis
+[BCC 2020]: https://bcc2020.github.io/
+[Bioc 2020]: http://bioc2020.bioconductor.org/
