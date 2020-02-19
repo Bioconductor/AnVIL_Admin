@@ -79,7 +79,7 @@ This section will provide a more detailed description of projects.
   
   - Github repo: https://github.com/anvilproject/anvil-docker, Dockerfile: https://github.com/anvilproject/anvil-docker/blob/master/anvil-rstudio-bioconductor/Dockerfile.
   
-  - The image is availlable at us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.3 
+  - The image is availlable at `us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.3`
 
 - _Kubernetes_
 
