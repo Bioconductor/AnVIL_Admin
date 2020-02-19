@@ -68,8 +68,7 @@ This section will provide a more detailed description of projects.
   on the [_Bioconductor_ fork][bioconductor-terra-docker] for _R_ /
   _Bioconductor_ content.
  
-  - Github repo: https://github.com/DataBiosphere/terra-docker/tree/master/terra-jupyter-bioconductor,
-  Dockerfile: https://github.com/DataBiosphere/terra-docker/blob/master/terra-jupyter-bioconductor/Dockerfile
+  - Links: [Jupyter github repo][] and [Jupyter Dockerfile][].
 
 - RStudio / _Bioconductor_
 
@@ -77,9 +76,12 @@ This section will provide a more detailed description of projects.
   custom 'bring your own' image to terra while work on a fully integrated
   RStudio environment is being developed.
   
-  - Github repo: https://github.com/anvilproject/anvil-docker, Dockerfile: https://github.com/anvilproject/anvil-docker/blob/master/anvil-rstudio-bioconductor/Dockerfile.
+  - Links: [RStudio Github repo][] and [RStudio Dockerfile][].
   
-  - The image is availlable at `us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.3`
+  - The image is availlable at
+    **us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.3**. This
+    is just the name of the Docker image, which is hosted on the
+    [Google Container Registry][].
 
 - _Kubernetes_
 
@@ -145,3 +147,8 @@ This section will provide a more detailed description of projects.
 [k8sredis]: https://github.com/Bioconductor/k8sredis
 [BCC 2020]: https://bcc2020.github.io/
 [Bioc 2020]: http://bioc2020.bioconductor.org/
+[Jupyter github repo]: https://github.com/DataBiosphere/terra-docker/tree/master/terra-jupyter-bioconductor
+[Jupyter Dockerfile]: https://github.com/DataBiosphere/terra-docker/blob/master/terra-jupyter-bioconductor/Dockerfile
+[RStudio Github repo]: https://github.com/anvilproject/anvil-docker
+[RStudio Dockerfile]: https://github.com/anvilproject/anvil-docker/blob/master/anvil-rstudio-bioconductor/Dockerfile
+[Google Container Registry]: https://cloud.google.com/container-registry/docs/pushing-and-pulling
