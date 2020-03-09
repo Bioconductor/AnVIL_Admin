@@ -30,8 +30,8 @@ Learn more [about][] _Bioconductor_ and _AnVIL_.
 - [AnVIL package][] to provide both developer-oriented and user-oriented
   AnVIL-specific functionality.
 - AnVIL / _Bioconductor_ oriented workshops
-  - [BCC 2020][] (proposed - awaiting voting results)
-  - [Bioc 2020][] (submission in progress)
+  - [BCC 2020][]. See R / Bioconductor in the Cloud description [here][]
+  - [Bioc 2020][]. Tentative [workshop materials][]
 - Continued development of [Training Materials][]
 - User tool for instrumentation analysis. Cost estimation of RAM, disk, time,
   etc.
@@ -146,7 +146,9 @@ This section will provide a more detailed description of projects.
 [bioconductor-terra-docker]: https://github.com/Bioconductor/terra-docker
 [k8sredis]: https://github.com/Bioconductor/k8sredis
 [BCC 2020]: https://bcc2020.github.io/
+[here]: https://bcc2020.github.io/training/
 [Bioc 2020]: http://bioc2020.bioconductor.org/
+[workshop materials]: https://github.com/waldronlab/AnVILWorkshop
 [Jupyter github repo]: https://github.com/DataBiosphere/terra-docker/tree/master/terra-jupyter-bioconductor
 [Jupyter Dockerfile]: https://github.com/DataBiosphere/terra-docker/blob/master/terra-jupyter-bioconductor/Dockerfile
 [RStudio Github repo]: https://github.com/anvilproject/anvil-docker
