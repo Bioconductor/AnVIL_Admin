@@ -20,7 +20,12 @@ Learn more [about][] _Bioconductor_ and _AnVIL_.
 ### Available Now
 
 - terra-jupyter-bioconductor docker container with current _Bioconductor_
-  Release 3.10 availablity. Location on gcr, us.gcr.io/broad-dsp-gcr-public/terra-jupyter-bioconductor:0.0.12.
+  Release 3.10 availablity. 
+  
+- `terra-jupyter-bioconductor:0.0.12` image on gcr, 
+	
+		us.gcr.io/broad-dsp-gcr-public/terra-jupyter-bioconductor:0.0.12.
+
 
 <a name="inprogress"></a>
 ### In Progress
