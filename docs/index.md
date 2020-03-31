@@ -20,7 +20,7 @@ Learn more [about][] _Bioconductor_ and _AnVIL_.
 ### Available Now
 
 - terra-jupyter-bioconductor docker container with current _Bioconductor_
-  Release 3.10 availablity.
+  Release 3.10 availablity. Location on gcr, us.gcr.io/broad-dsp-gcr-public/terra-jupyter-bioconductor:0.0.12.
 
 <a name="inprogress"></a>
 ### In Progress
@@ -63,10 +63,12 @@ This section will provide a more detailed description of projects.
   version 3.10, and R version 3.6 on jupyter notebooks. They work like
   the [bioconductor_docker][] images, with the capability to install 'all
   of' the _Bioconductor_ packages.  This image has been tested on
-  Leonardo and installs all but 31 packages in _Bioconductor_ release
-  3.10. The github link for this work is [terra-docker][]; use issues
+  Leonardo and installs all but a few packages in _Bioconductor_ release
+  3.10, which fail due to achived CRAN dependencies. The github link for this work is [terra-docker][]; use issues
   on the [_Bioconductor_ fork][bioconductor-terra-docker] for _R_ /
   _Bioconductor_ content.
+  
+  - The latest image is **us.gcr.io/broad-dsp-gcr-public/terra-jupyter-bioconductor:0.0.12**.
  
   - Links: [Jupyter github repo][] and [Jupyter Dockerfile][].
 
