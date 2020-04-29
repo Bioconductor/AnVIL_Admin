@@ -138,7 +138,7 @@ This section will provide a more detailed description of projects.
 
 
 [_Bioconductor_]: https://bioconductor.org
-[_AnVIL_]: https://www.genome.gov/27569268/genomic-analysis-visualization-and-informatics-labspace-anvil/
+[_AnVIL_]: https://anvilproject.org
 [about]: about
 [AnVIL package]: https://github.com/Bioconductor/AnVIL
 [Training Materials]: training
