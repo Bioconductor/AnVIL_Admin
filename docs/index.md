@@ -3,11 +3,9 @@
 ## Project Activities
 
 This site summarizes ongoing [_Bioconductor_][] development activities
-related to [_AnVIL_][]. **Note**: All resources listed are under
-development.
+related to [_AnVIL_][].
 
 Learn more [about][] _Bioconductor_ and _AnVIL_.
-
 
 ## Project Activities Overview
 
@@ -19,24 +17,38 @@ Learn more [about][] _Bioconductor_ and _AnVIL_.
 <a name="now"></a>
 ### Available Now
 
-- Jupyter-based R / Bioconductor container. Available in the AnVIL and
-  [us.gcr.io/broad-dsp-gcr-public/terra-jupyter-bioconductor:0.0.12][].
+- Jupyter _R_ / _Bioconductor_ notebooks
+  ([image][terra-jupyter-bioconductor:image],
+  [github][terra-jupyter-bioconductor:github]). Use by choosing the
+  'Bioconductor' Notebook Runtime.
 
+
+- [AnVIL][anvil:bioconductor] _R_ package for user- and
+  developer-oriented AnVIL-specific functionality. Install with:
+
+  - `BiocManager::install("Bioconductor/AnVIL")` -- _Bioconductor_
+    version 3.10 (_R_ 3.6.*) on the AnVIL.
+  - `BiocManager::install("AnVIL")` -- _Bioconductor_
+    version 3.11 (_R_ 4.0.0) or later.
 
 <a name="inprogress"></a>
 ### In Progress
 
-- RStudio-based R / Bioconductor docker container. Available at
-  [us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.3][]
-- [AnVIL][AnVIL_package] package to provide both developer-oriented
-  and user-oriented AnVIL-specific functionality.
+- _RStudio_ _R_ / _Bioconductor_
+  ([image][anvil-rstudio-bioconductor:image],
+  [github][anvil-rstudio-bioconductor:github]). Use by selecting a
+  'custom' Notebook Runtime and entering the container image
+  `us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.3`.
+
+
 - AnVIL / _Bioconductor_ oriented workshops
   - [BCC 2020][]. See R / Bioconductor in the Cloud description [here][]
   - [Bioc 2020][]. Tentative [workshop materials][]
+
 - Continued development of [Training Materials][]
+
 - User tool for instrumentation analysis. Cost estimation of RAM, disk, time,
   etc.
-
 
 <a name="future"></a>
 ### Future
@@ -46,50 +58,49 @@ Learn more [about][] _Bioconductor_ and _AnVIL_.
 <a name="details"></a>
 ## Project Activities --  Detailed
 
-This section will provide a more detailed description of projects.
+This section provides a more detailed description of projects.
 
 - [Containers](#containers)
-- [Developer / User Tools](#tools)
+- [User and Developer Tools](#tools)
 
 <a name="containers"></a>
 ### Containers
 
-- Jupyter notebook / _Bioconductor_
+The latest terra-jupyter-bioconductor docker containers are available
+at [AnVIL][] and on the Google Container Registry ([gcr][]). These
+containers have the Bioconductor release version 3.10, and R version
+3.6 as jupyter notebooks. They work like the [bioconductor_docker][]
+images, with the capability to install 'all of' _Bioconductor_
+packages.  This image has been tested on Leonardo and installs all but
+a few packages in _Bioconductor_ release 3.10, which fail due to
+achived CRAN dependencies.
 
-  - The latest terra-jupyter-bioconductor docker containers are
-    available at [AnVIL][] and on the [Google Container
-    Registry][gcr]. These containers have the Bioconductor release
-    version 3.10, and R version 3.6 as jupyter notebooks. They work
-    like the [bioconductor_docker][] images, with the capability to
-    install 'all of' the _Bioconductor_ packages.  This image has been
-    tested on Leonardo and installs all but a few packages in
-    _Bioconductor_ release 3.10, which fail due to achived CRAN
-    dependencies. The github link for this work is [terra-docker][];
-    use issues on the [Bioconductor fork][bioconductor-terra-docker]
-    for _R_ / _Bioconductor_ content.
-  
-  - The latest image is [us.gcr.io/broad-dsp-gcr-public/terra-jupyter-bioconductor:0.0.12][].
- 
-  - Links: [Jupyter github repo][] and [Jupyter Dockerfile][].
+The images are based on _R_ version 3.6 and _Bioconductor_ version
+3.10.
 
-- RStudio / _Bioconductor_
+Jupyter notebooks
 
-  - The terra-rstudio-bioconductor docker container is currenly available as a
-  custom 'bring your own' image to terra while work on a fully integrated
-  RStudio environment is being developed.
-  
-  - Links: [RStudio Github repo][] and [RStudio Dockerfile][].
-  
-  - The image is availlable at
-    [us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.3][]. This
-    is just the name of the Docker image, which is hosted on the
-    [Google Container Registry][].
+- [image][terra-jupyter-bioconductor:image],
+  [github][terra-jupyter-bioconductor:github], _Bioconductor_
+  [github][terra-jupyter-bioconductor:github] (use for
+  _Bioconductor_-specific issues).
 
-- _Kubernetes_
+RStudio / _Bioconductor_
 
-  - [Slides](https://docs.google.com/presentation/d/1Y7g_6X8I6DPaNK84EzWNo1wVpfAwdORGt6kcgcPYOV4/edit?usp=sharing)
-  - Illustration of working with R and Kubernetes : https://github.com/shwetagopaul92/hgvarByKub
-  - [k8sredis][] An alternative approach: k8s with redis work queue and
+- [image][anvil-rstudio-bioconductor:image],
+  [github][anvil-rstudio-bioconductor:github].
+
+- The terra-rstudio-bioconductor docker container is currently
+  available as a custom 'bring your own' image to terra while work on
+  a fully integrated RStudio environment is being developed.
+
+_Kubernetes_
+
+- [Slides](https://docs.google.com/presentation/d/1Y7g_6X8I6DPaNK84EzWNo1wVpfAwdORGt6kcgcPYOV4/edit?usp=sharing)
+
+- Illustration of working with R and Kubernetes : https://github.com/shwetagopaul92/hgvarByKub
+
+- [k8sredis][] An alternative approach: k8s with redis work queue and
   BiocParallel functionality. Start a number of parallel jobs on k8s,
   then an interactive 'manager' (e.g., RStudio session; Jupyter
   notebook).  Once in R one can
@@ -97,13 +108,13 @@ This section will provide a more detailed description of projects.
     ```
     library(RedisParam)
     fun = function(i, ...) {
-	Sys.sleep(1)
-	system("hostname", intern=TRUE)
+        Sys.sleep(1)
+        system("hostname", intern=TRUE)
     }
 
     p <- RedisParam(
-	workers = 5, jobname = "demo",
-	is.worker = FALSE
+        workers = 5, jobname = "demo",
+        is.worker = FALSE
     )
     res <- bplapply(1:13, fun, BPPARAM = p)
 
@@ -117,46 +128,50 @@ This section will provide a more detailed description of projects.
     ```
 
 <a name="tools"></a>
-### Developer / User Tools
+### User and Developer Tools
 
-- [AnVIL package][]
+AnVIL package ([_Bioconductor_][anvil:bioconductor],
+[github][anvil:github]).
 
-  - This _R_ package currently provides both developer-oriented and
-    user-oriented AnVIL-specific functionality.
-  - (available) Developer-oriented access to major AnVIL components
-    (Terra, Leonardo, Dockstore, and Gen3) REST APIs. Bearer-token
-    authentication requires gcloud sdk installation. Work on expanding
-    and implemented additional REST APIs in on-going.
-  - (available) Developer- and user-oriented facilities for interacting with the
-    Google cloud, e.g., `gsutil_*()`, `localize()`, `delocalize()`.
-  - (under development) Because the software environment is fixed by
-    the container, packages can be pre-built and rapidly installed
-    simply by copying from an online repository. We are developing the
-    tooling to support this repository (as folders in google buckets)
-    and to facilitate easy installation (via the [AnVIL package][]
-    `install()` function).
+- This _R_ package provides both developer-oriented and user-oriented
+  AnVIL-specific functionality.
+- `av*()` facilities for interacting with workspace data elements.
+- `gsutil_*()` facilities for interacting with the Google cloud.
+- Developer-oriented access to major AnVIL components (Terra,
+  Leonardo, Dockstore, and Gen3) REST APIs. Bearer-token
+  authentication requires gcloud sdk installation. Work on expanding
+  and implemented additional REST APIs in on-going.
 
+Binary package installation (under development)
+
+- Because the software environment is fixed by the container, packages
+  can be pre-built and rapidly installed simply by copying from an
+  online repository. We are developing the tooling to support this
+  repository (as folders in google buckets) and to facilitate easy
+  installation (via the `AnVIL::install()` function).
 
 [_Bioconductor_]: https://bioconductor.org
 [_AnVIL_]: https://anvilproject.org
 [about]: about
-[AnVIL package]: https://github.com/Bioconductor/AnVIL
 [Training Materials]: training
 [AnVIL]: https://anvil.terra.app
 [AnVIL_package]: https://github.com/Bioconductor/AnVIL
 [gcr]: https://console.cloud.google.com/gcr/images/broad-dsp-gcr-public/US/terra-jupyter-bioconductor
 [bioconductor_docker]: https://github.com/Bioconductor/bioconductor_docker
-[terra-docker]: https://github.com/DataBiosphere/terra-docker/tree/master/terra-jupyter-bioconductor
-[bioconductor-terra-docker]: https://github.com/Bioconductor/terra-docker
 [k8sredis]: https://github.com/Bioconductor/k8sredis
 [BCC 2020]: https://bcc2020.github.io/
 [here]: https://bcc2020.github.io/training/
 [Bioc 2020]: http://bioc2020.bioconductor.org/
 [workshop materials]: https://github.com/waldronlab/AnVILWorkshop
-[Jupyter github repo]: https://github.com/DataBiosphere/terra-docker/tree/master/terra-jupyter-bioconductor
-[Jupyter Dockerfile]: https://github.com/DataBiosphere/terra-docker/blob/master/terra-jupyter-bioconductor/Dockerfile
-[us.gcr.io/broad-dsp-gcr-public/terra-jupyter-bioconductor:0.0.12]: https://us.gcr.io/broad-dsp-gcr-public/terra-jupyter-bioconductor:0.0.12
-[us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.3]: https://us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.3
-[RStudio Github repo]: https://github.com/anvilproject/anvil-docker
-[RStudio Dockerfile]: https://github.com/anvilproject/anvil-docker/blob/master/anvil-rstudio-bioconductor/Dockerfile
+
+[anvil:bioconductor]: https://bioconductor.org/packages/AnVIL
+[anvil:github]: https://github.com/Bioconductor/AnVIL
+
+[terra-jupyter-bioconductor:image]: https://us.gcr.io/broad-dsp-gcr-public/terra-jupyter-bioconductor:0.0.12
+[terra-jupyter-bioconductor:github]: https://github.com/DataBiosphere/terra-docker/tree/master/terra-jupyter-bioconductor
+[terra-jupyter-bioconductor:bioconductor]: https://github.com/Bioconductor/terra-docker
+
+[anvil-rstudio-bioconductor:image]: https://us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.3
+[anvil-rstudio-bioconductor:github]: https://github.com/anvilproject/anvil-docker
+
 [Google Container Registry]: https://cloud.google.com/container-registry/docs/pushing-and-pulling
