@@ -38,7 +38,7 @@ Learn more [about][] _Bioconductor_ and _AnVIL_.
   ([image][anvil-rstudio-bioconductor:image],
   [github][anvil-rstudio-bioconductor:github]). Use by selecting a
   'custom' Notebook Runtime and entering the container image
-  `us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.3`.
+  `us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.4`.
 
 
 - AnVIL / _Bioconductor_ oriented workshops
@@ -71,9 +71,11 @@ at [AnVIL][] and on the Google Container Registry ([gcr][]). These
 containers have the Bioconductor release version 3.10, and R version
 3.6 as jupyter notebooks. They work like the [bioconductor_docker][]
 images, with the capability to install 'all of' _Bioconductor_
-packages.  This image has been tested on Leonardo and installs all but
-a few packages in _Bioconductor_ release 3.10, which fail due to
-achived CRAN dependencies.
+packages along with a few pre-installed "core" set of packages. The 
+terra-jupyter-bioconductor image inherits from the terra-jupyter-r 
+image which has all the system dependencies installed. This image has 
+been tested on Leonardo and installs all but a few packages in 
+_Bioconductor_ release 3.10, which fail due to achived CRAN dependencies.
 
 The images are based on _R_ version 3.6 and _Bioconductor_ version
 3.10.
@@ -167,11 +169,11 @@ Binary package installation (under development)
 [anvil:bioconductor]: https://bioconductor.org/packages/AnVIL
 [anvil:github]: https://github.com/Bioconductor/AnVIL
 
-[terra-jupyter-bioconductor:image]: https://us.gcr.io/broad-dsp-gcr-public/terra-jupyter-bioconductor:0.0.12
+[terra-jupyter-bioconductor:image]: https://us.gcr.io/broad-dsp-gcr-public/terra-jupyter-bioconductor:0.0.14
 [terra-jupyter-bioconductor:github]: https://github.com/DataBiosphere/terra-docker/tree/master/terra-jupyter-bioconductor
 [terra-jupyter-bioconductor:bioconductor]: https://github.com/Bioconductor/terra-docker
 
-[anvil-rstudio-bioconductor:image]: https://us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.3
+[anvil-rstudio-bioconductor:image]: https://us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.4
 [anvil-rstudio-bioconductor:github]: https://github.com/anvilproject/anvil-docker
 
 [Google Container Registry]: https://cloud.google.com/container-registry/docs/pushing-and-pulling
