@@ -30,7 +30,8 @@ Learn more [about][] _Bioconductor_ and _AnVIL_.
     version 3.10 (_R_ 3.6.*) on the AnVIL.
   - `BiocManager::install("AnVIL")` -- _Bioconductor_
     version 3.11 (_R_ 4.0.0) or later.
--[AnVIL][bjstubbs/AnVILBilling] _R_ package for tracking and detailing billing and usage of the AnVIL and Terra resources
+    
+- [AnVIL][bjstubbs/AnVILBilling] _R_ package for tracking and detailing billing and usage of the AnVIL and Terra resources
 
 <a name="inprogress"></a>
 ### In Progress
