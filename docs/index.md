@@ -64,6 +64,7 @@ This section provides a more detailed description of projects.
 
 - [Containers](#containers)
 - [User and Developer Tools](#tools)
+- [Metadata access and overview](#metad)
 
 <a name="containers"></a>
 ### Containers
@@ -153,6 +154,38 @@ Binary package installation (under development)
   online repository. We are developing the tooling to support this
   repository (as folders in google buckets) and to facilitate easy
   installation (via the `AnVIL::install()` function).
+
+<a name="metad"></a>
+### Metadata access and overview
+
+<!--
+Email by Vince to Ingestion members -- Kristin Wuichet, Robert Carroll,
+Garrett Rupp
+
+Hi Kristin, Robert, Garrett --
+
+After Brian O'Connor's talk on interoperability I raised a question related
+to CCDG data content that we have been looking at in preparation for the
+NHGRI AnVIL CCDG/CMG jamboree.  We wanted to see how easy it
+is to survey participant phenotype data.
+-->
+
+AnVIL package tools can be used to discover incompatibilities
+or ambiguities in study annotation.  BJ's class worked through
+metadata survey exercises.  An example of incompatible/ambiguous
+annotation is present in the Autism workspaces.
+
+<img src="images/ccdgAFF.png"/>
+
+We are looking at two studies from NYGC referring to autism, one has substring
+ACE2 and the other SSC.  What we see above is that AFFECTION_STATUS is coded 1/2 in the SSC study,
+and more prosaically in the ACE2 study.  It may be that the
+labels in ACE2 study are more problematic as the options seem to be "0", "ASD affected",
+"ASD Affected", and "Diagnosis uncertain" -- or perhaps it is just a letter casing issue.
+
+The ingestion group was notified and replied that "there is no process for the
+AnVIL team to retrospectively address existing data".  Interest was expressed in
+learning more about our metadata survey capabilities.
 
 [_Bioconductor_]: https://bioconductor.org
 [_AnVIL_]: https://anvilproject.org
