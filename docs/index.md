@@ -70,20 +70,19 @@ This section provides a more detailed description of projects.
 ### Containers
 
 The latest terra-jupyter-bioconductor docker containers are available
-at [AnVIL][] and on the Google Container Registry ([gcr][]). These
-containers have the Bioconductor release version 3.10, and R version
-3.6 as jupyter notebooks. They work like the [bioconductor_docker][]
-images, with the capability to install 'all of' _Bioconductor_
-packages along with a few pre-installed "core" set of packages. The 
-terra-jupyter-bioconductor image inherits from the terra-jupyter-r 
-image which has all the system dependencies installed. This image has 
-been tested on Leonardo and installs all but a few packages in 
-_Bioconductor_ release 3.10, which fail due to achived CRAN dependencies.
+at [AnVIL][] and on the Google Container Registry ([gcr][]). They work
+like the [bioconductor_docker][] images, with the capability to
+install 'all of' _Bioconductor_ packages along with a few
+pre-installed "core" set of packages. The terra-jupyter-bioconductor
+image inherits from the terra-jupyter-r image which has all the system
+dependencies installed. This image has been tested on Leonardo and
+installs all but a few packages in _Bioconductor_ release,which
+fail due to achived CRAN dependencies.
+
+Jupyter notebooks
 
 The images are based on _R_ version 3.6 and _Bioconductor_ version
 3.10.
-
-Jupyter notebooks
 
 - [image][terra-jupyter-bioconductor:image],
   [github][terra-jupyter-bioconductor:github], _Bioconductor_
@@ -91,6 +90,8 @@ Jupyter notebooks
   _Bioconductor_-specific issues).
 
 RStudio / _Bioconductor_
+
+The image now has R-4.0.0 and the latest stable release Bioc 3.11.
 
 - [image][anvil-rstudio-bioconductor:image],
   [github][anvil-rstudio-bioconductor:github].
