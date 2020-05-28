@@ -30,6 +30,9 @@ Learn more [about][] _Bioconductor_ and _AnVIL_.
     version 3.10 (_R_ 3.6.*) on the AnVIL.
   - `BiocManager::install("AnVIL")` -- _Bioconductor_
     version 3.11 (_R_ 4.0.0) or later.
+  - `AnVIL::install("Rsamtools")` -- _Bioconductor_ version 3.11 (_R_ 4.0.0) or later; `https://storage.googleapis.com/anvil-rstudio-bioconductor/0.99/3.11/src/contrib/` is the
+home of 3212 binary package images created 27 May 2020.  See <a href="#binbuilds">binary builds</a>
+below for more details.
     
 - [AnVILBilling](https://github.com/bjstubbs/AnVILBilling) _R_ package for tracking and detailing billing and usage of the AnVIL and Terra resources
 
@@ -155,6 +158,53 @@ Binary package installation (under development)
   online repository. We are developing the tooling to support this
   repository (as folders in google buckets) and to facilitate easy
   installation (via the `AnVIL::install()` function).
+
+<a name="binbuilds"></a>
+
+_Notes on construction of binary package images within AnVIL._
+
+```
+
+1) Install AnVIL -- do with Ncpus>1
+2) allow updates
+3a) NOT YET: set options(repos=AnVIL::repositories()) to get fast install of CRAN pks
+3b) BiocManager::install("vjcitn/BiocBBSpack", Ncpus=10)
+4) library(BiocBBSpack)
+5) pl = get_bioc_packagelist() # will get software.txt from manifest git repo after cloning it
+6) BiocManager::install(pl, Ncpus=50) -- this gets us 3212 packages binary packages ... odd situation for affypdnn not available for 3.11 buy why in manifest?
+
+These packages do not install
+
+> dput(sort(setdiff(pl, installed)))
+c("affypdnn", "anamiR", "BatchQC", "CALIB", "ccfindR", "cellGrowth", 
+"cellTree", "CHARGE", "chroGPS", "cobindR", "CountClust", "CTDquerier", 
+"CVE", "debrowser", "DEDS", "Doscheda", "flowFit", "GeneGeneInteR", 
+"Genominator", "gpuMagic", "IdMappingAnalysis", "IdMappingRetrieval", 
+"Imetagene", "lol", "lpNet", "LVSmiRNA", "manta", "MCRestimate", 
+"Melissa", "MoonlightR", "MSGFgui", "MSGFplus", "MTseeker", "nem", 
+"netbenchmark", "nethet", "PAPi", "PathwaySplice", "pcaGoPromoter", 
+"pint", "proteoQC", "QUALIFIER", "R3CPET", "readat", "RIPSeeker", 
+"SANTA", "scAlign", "sparsenetgls", "splicegear", "trena", "waveTiling", 
+"xps", "YAPSA")
+
+7) use dotarmv as follows
+
+setwd(.libPaths()[1])
+jnk = lapply(dir(), dotarmv)  # could probably be done with mclapply or bash
+
+binaries will appear in the dest argument of dotarmv
+
+
+8)
+
+set up
+
+https://storage.googleapis.com/anvil-rstudio-bioconductor/0.99/3.11/src/contrib/
+
+9) gsutil -m cp (contents of dotarmv destination) to the src/contrib bucket
+
+10) create PACKAGES.gz using tools::write_PACKAGE(unpacked=TRUE), copy to src/contrib
+```
 
 <a name="metad"></a>
 ### Metadata access and overview
