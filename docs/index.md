@@ -22,6 +22,12 @@ Learn more [about][] _Bioconductor_ and _AnVIL_.
   [github][terra-jupyter-bioconductor:github]). Use by choosing the
   'Bioconductor' Notebook Runtime.
 
+- _RStudio_ _R_ / _Bioconductor_
+  ([image][anvil-rstudio-bioconductor:image],
+  [github][anvil-rstudio-bioconductor:github]). Use by selecting a
+  'custom' Notebook Runtime and entering the container image
+  `us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.5`. The
+  image has R-4.0.0 and the latest stable release Bioc 3.11.
 
 - [AnVIL][anvil:bioconductor] _R_ package for user- and
   developer-oriented AnVIL-specific functionality. Install with:
@@ -30,23 +36,24 @@ Learn more [about][] _Bioconductor_ and _AnVIL_.
     version 3.10 (_R_ 3.6.*) on the AnVIL.
   - `BiocManager::install("AnVIL")` -- _Bioconductor_
     version 3.11 (_R_ 4.0.0) or later.
-  - `AnVIL::install("Rsamtools")` -- _Bioconductor_ version 3.11 (_R_ 4.0.0) or later; `https://storage.googleapis.com/anvil-rstudio-bioconductor/0.99/3.11/src/contrib/` is the
-home of 3212 binary package images created 27 May 2020.  See <a href="#binbuilds">binary builds</a>
-below for more details.
+
+- Fast binary package installation of 3212 _Bioconductor_ and _CRAN_ package
+
+  - Available on the _RStudio_ _R_ / _Bioconductor_ image (_R_ 4.0.0,
+    _Bioconductor_ 3.11) ONLY. Use `AnVIL::install("Rsamtools")`.
+  - 'CRAN'-style repository at
+    `https://storage.googleapis.com/anvil-rstudio-bioconductor/0.99/3.11`;
+    images created 27 May 2020.
+  - See <a href="#binbuilds">binary builds</a> for more details.
     
 - [AnVILBilling](https://github.com/bjstubbs/AnVILBilling) _R_ package for tracking and detailing billing and usage of the AnVIL and Terra resources
 
 <a name="inprogress"></a>
 ### In Progress
 
-- _RStudio_ _R_ / _Bioconductor_
-  ([image][anvil-rstudio-bioconductor:image],
-  [github][anvil-rstudio-bioconductor:github]). Use by selecting a
-  'custom' Notebook Runtime and entering the container image
-  `us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.5`. The image now has R-4.0.0 and the latest stable release Bioc 3.11.
-
 
 - AnVIL / _Bioconductor_ oriented workshops
+
   - [BCC 2020][]. See R / Bioconductor in the Cloud description [here][]
   - [Bioc 2020][]. Tentative [workshop materials][]
 
@@ -67,7 +74,8 @@ This section provides a more detailed description of projects.
 
 - [Containers](#containers)
 - [User and Developer Tools](#tools)
-- [Metadata access and overview](#metad)
+- [Metadata access and overview](#metadata)
+- [Other activities](#other-activities)
 
 <a name="containers"></a>
 ### Containers
@@ -103,6 +111,108 @@ The image now has R-4.0.0 and the latest stable release Bioc 3.11.
   available as a custom 'bring your own' image to terra while work on
   a fully integrated RStudio environment is being developed.
 
+<a name="tools"></a>
+### User and Developer Tools
+
+AnVIL package ([_Bioconductor_][anvil:bioconductor],
+[github][anvil:github]).
+
+- This _R_ package provides both developer-oriented and user-oriented
+  AnVIL-specific functionality.
+- `av*()` facilities for interacting with workspace data elements.
+- `gsutil_*()` facilities for interacting with the Google cloud.
+- Developer-oriented access to major AnVIL components (Terra,
+  Leonardo, Dockstore, and Gen3) REST APIs. Bearer-token
+  authentication requires gcloud sdk installation. Work on expanding
+  and implemented additional REST APIs in on-going.
+
+Binary package installation (under development)
+
+- Because the software environment is fixed by the container, packages
+  can be pre-built and rapidly installed simply by copying from an
+  online repository. We are developing the tooling to support this
+  repository (as folders in google buckets) and to facilitate easy
+  installation (via the `AnVIL::install()` function).
+
+<a name="binbuilds"></a>
+Notes on construction of binary package images within AnVIL
+
+1. Install AnVIL -- do with Ncpus > 1
+2. Allow updates
+3. NOT YET: set `options(repos=AnVIL::repositories())` to get fast
+   install of CRAN packages
+4. `BiocManager::install("vjcitn/BiocBBSpack", Ncpus=10)`
+5. `library(BiocBBSpack)`
+6. Retrieve manifest from Bioconductor git `pl = get_bioc_packagelist()`
+7. `BiocManager::install(pl, Ncpus=50)` -- this gets us 3212 packages
+   binary packages ... odd situation for affypdnn not available for
+   3.11 but why in manifest? These packages do not install:
+   
+   ```
+   > dput(sort(setdiff(pl, installed)))
+   c("affypdnn", "anamiR", "BatchQC", "CALIB", "ccfindR", "cellGrowth", 
+   "cellTree", "CHARGE", "chroGPS", "cobindR", "CountClust", "CTDquerier", 
+   "CVE", "debrowser", "DEDS", "Doscheda", "flowFit", "GeneGeneInteR", 
+   "Genominator", "gpuMagic", "IdMappingAnalysis", "IdMappingRetrieval", 
+   "Imetagene", "lol", "lpNet", "LVSmiRNA", "manta", "MCRestimate", 
+   "Melissa", "MoonlightR", "MSGFgui", "MSGFplus", "MTseeker", "nem", 
+   "netbenchmark", "nethet", "PAPi", "PathwaySplice", "pcaGoPromoter", 
+   "pint", "proteoQC", "QUALIFIER", "R3CPET", "readat", "RIPSeeker", 
+   "SANTA", "scAlign", "sparsenetgls", "splicegear", "trena", "waveTiling", 
+   "xps", "YAPSA")
+   ```
+
+8. Use `dotarmv()` as follows
+
+    ```
+    setwd(.libPaths()[1])
+    jnk = lapply(dir(), dotarmv)  # could probably be done with mclapply or bash
+    ```
+
+   binaries will appear in the `dest=` argument of `dotarmv()`
+
+
+9. Set up https://storage.googleapis.com/anvil-rstudio-bioconductor/0.99/3.11/src/contrib/
+
+10. Use `gsutil -m cp` to copy content of dotarmv to the src/contrib bucket
+
+11. Create PACKAGES.gz using `tools::write_PACKAGE(unpacked=TRUE)`, copy to src/contrib
+
+<a name="metadata"></a>
+### Metadata access and overview
+
+<!--
+Email by Vince to Ingestion members -- Kristin Wuichet, Robert Carroll,
+Garrett Rupp
+
+Hi Kristin, Robert, Garrett --
+
+After Brian O'Connor's talk on interoperability I raised a question related
+to CCDG data content that we have been looking at in preparation for the
+NHGRI AnVIL CCDG/CMG jamboree.  We wanted to see how easy it
+is to survey participant phenotype data.
+-->
+
+AnVIL package tools can be used to discover incompatibilities
+or ambiguities in study annotation.  BJ's class worked through
+metadata survey exercises.  An example of incompatible/ambiguous
+annotation is present in the Autism workspaces.
+
+<img src="images/ccdgAFF.png"/>
+
+We are looking at two studies from NYGC referring to autism, one has substring
+ACE2 and the other SSC.  What we see above is that AFFECTION_STATUS is coded 1/2 in the SSC study,
+and more prosaically in the ACE2 study.  It may be that the
+labels in ACE2 study are more problematic as the options seem to be "0", "ASD affected",
+"ASD Affected", and "Diagnosis uncertain" -- or perhaps it is just a letter casing issue.
+
+The ingestion group was notified and replied that "there is no process for the
+AnVIL team to retrospectively address existing data".  Interest was expressed in
+learning more about our metadata survey capabilities.
+
+<a name="other-activities"></a>
+### Other activities
+
 _Kubernetes_
 
 - [Slides](https://docs.google.com/presentation/d/1Y7g_6X8I6DPaNK84EzWNo1wVpfAwdORGt6kcgcPYOV4/edit?usp=sharing)
@@ -135,108 +245,6 @@ _Kubernetes_
     ## five-worker-zwlpw
     ##                 3
     ```
-
-<a name="tools"></a>
-### User and Developer Tools
-
-AnVIL package ([_Bioconductor_][anvil:bioconductor],
-[github][anvil:github]).
-
-- This _R_ package provides both developer-oriented and user-oriented
-  AnVIL-specific functionality.
-- `av*()` facilities for interacting with workspace data elements.
-- `gsutil_*()` facilities for interacting with the Google cloud.
-- Developer-oriented access to major AnVIL components (Terra,
-  Leonardo, Dockstore, and Gen3) REST APIs. Bearer-token
-  authentication requires gcloud sdk installation. Work on expanding
-  and implemented additional REST APIs in on-going.
-
-Binary package installation (under development)
-
-- Because the software environment is fixed by the container, packages
-  can be pre-built and rapidly installed simply by copying from an
-  online repository. We are developing the tooling to support this
-  repository (as folders in google buckets) and to facilitate easy
-  installation (via the `AnVIL::install()` function).
-
-<a name="binbuilds"></a>
-
-_Notes on construction of binary package images within AnVIL._
-
-```
-
-1) Install AnVIL -- do with Ncpus>1
-2) allow updates
-3a) NOT YET: set options(repos=AnVIL::repositories()) to get fast install of CRAN pks
-3b) BiocManager::install("vjcitn/BiocBBSpack", Ncpus=10)
-4) library(BiocBBSpack)
-5) pl = get_bioc_packagelist() # will get software.txt from manifest git repo after cloning it
-6) BiocManager::install(pl, Ncpus=50) -- this gets us 3212 packages binary packages ... odd situation for affypdnn not available for 3.11 buy why in manifest?
-
-These packages do not install
-
-> dput(sort(setdiff(pl, installed)))
-c("affypdnn", "anamiR", "BatchQC", "CALIB", "ccfindR", "cellGrowth", 
-"cellTree", "CHARGE", "chroGPS", "cobindR", "CountClust", "CTDquerier", 
-"CVE", "debrowser", "DEDS", "Doscheda", "flowFit", "GeneGeneInteR", 
-"Genominator", "gpuMagic", "IdMappingAnalysis", "IdMappingRetrieval", 
-"Imetagene", "lol", "lpNet", "LVSmiRNA", "manta", "MCRestimate", 
-"Melissa", "MoonlightR", "MSGFgui", "MSGFplus", "MTseeker", "nem", 
-"netbenchmark", "nethet", "PAPi", "PathwaySplice", "pcaGoPromoter", 
-"pint", "proteoQC", "QUALIFIER", "R3CPET", "readat", "RIPSeeker", 
-"SANTA", "scAlign", "sparsenetgls", "splicegear", "trena", "waveTiling", 
-"xps", "YAPSA")
-
-7) use dotarmv as follows
-
-setwd(.libPaths()[1])
-jnk = lapply(dir(), dotarmv)  # could probably be done with mclapply or bash
-
-binaries will appear in the dest argument of dotarmv
-
-
-8)
-
-set up
-
-https://storage.googleapis.com/anvil-rstudio-bioconductor/0.99/3.11/src/contrib/
-
-9) gsutil -m cp (contents of dotarmv destination) to the src/contrib bucket
-
-10) create PACKAGES.gz using tools::write_PACKAGE(unpacked=TRUE), copy to src/contrib
-```
-
-<a name="metad"></a>
-### Metadata access and overview
-
-<!--
-Email by Vince to Ingestion members -- Kristin Wuichet, Robert Carroll,
-Garrett Rupp
-
-Hi Kristin, Robert, Garrett --
-
-After Brian O'Connor's talk on interoperability I raised a question related
-to CCDG data content that we have been looking at in preparation for the
-NHGRI AnVIL CCDG/CMG jamboree.  We wanted to see how easy it
-is to survey participant phenotype data.
--->
-
-AnVIL package tools can be used to discover incompatibilities
-or ambiguities in study annotation.  BJ's class worked through
-metadata survey exercises.  An example of incompatible/ambiguous
-annotation is present in the Autism workspaces.
-
-<img src="images/ccdgAFF.png"/>
-
-We are looking at two studies from NYGC referring to autism, one has substring
-ACE2 and the other SSC.  What we see above is that AFFECTION_STATUS is coded 1/2 in the SSC study,
-and more prosaically in the ACE2 study.  It may be that the
-labels in ACE2 study are more problematic as the options seem to be "0", "ASD affected",
-"ASD Affected", and "Diagnosis uncertain" -- or perhaps it is just a letter casing issue.
-
-The ingestion group was notified and replied that "there is no process for the
-AnVIL team to retrospectively address existing data".  Interest was expressed in
-learning more about our metadata survey capabilities.
 
 [_Bioconductor_]: https://bioconductor.org
 [_AnVIL_]: https://anvilproject.org
