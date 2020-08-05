@@ -26,7 +26,7 @@ Learn more [about][] _Bioconductor_ and _AnVIL_.
   ([image][anvil-rstudio-bioconductor:image],
   [github][anvil-rstudio-bioconductor:github]). Use by selecting a
   'custom' Notebook Runtime and entering the container image
-  `us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.5`. The
+  `us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.6`. The
   image has R-4.0.0 and the latest stable release Bioc 3.11.
 
 - [AnVIL][anvil:bioconductor] _R_ package for user- and
@@ -267,7 +267,7 @@ _Kubernetes_
 [terra-jupyter-bioconductor:github]: https://github.com/DataBiosphere/terra-docker/tree/master/terra-jupyter-bioconductor
 [terra-jupyter-bioconductor:bioconductor]: https://github.com/Bioconductor/terra-docker
 
-[anvil-rstudio-bioconductor:image]: https://us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.5
+[anvil-rstudio-bioconductor:image]: https://us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.6
 [anvil-rstudio-bioconductor:github]: https://github.com/anvilproject/anvil-docker
 
 [Google Container Registry]: https://cloud.google.com/container-registry/docs/pushing-and-pulling
