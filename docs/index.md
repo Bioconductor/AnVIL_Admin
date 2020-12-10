@@ -263,11 +263,11 @@ _Kubernetes_
 [anvil:bioconductor]: https://bioconductor.org/packages/AnVIL
 [anvil:github]: https://github.com/Bioconductor/AnVIL
 
-[terra-jupyter-bioconductor:image]: https://us.gcr.io/broad-dsp-gcr-public/terra-jupyter-bioconductor:0.0.14
+[terra-jupyter-bioconductor:image]: https://us.gcr.io/broad-dsp-gcr-public/terra-jupyter-bioconductor:1.0.11
 [terra-jupyter-bioconductor:github]: https://github.com/DataBiosphere/terra-docker/tree/master/terra-jupyter-bioconductor
 [terra-jupyter-bioconductor:bioconductor]: https://github.com/Bioconductor/terra-docker
 
-[anvil-rstudio-bioconductor:image]: https://us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.6
+[anvil-rstudio-bioconductor:image]: https://us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.8
 [anvil-rstudio-bioconductor:github]: https://github.com/anvilproject/anvil-docker
 
 [Google Container Registry]: https://cloud.google.com/container-registry/docs/pushing-and-pulling
