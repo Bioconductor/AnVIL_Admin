@@ -26,8 +26,8 @@ Learn more [about][] _Bioconductor_ and _AnVIL_.
   ([image][anvil-rstudio-bioconductor:image],
   [github][anvil-rstudio-bioconductor:github]). Use by selecting a
   'custom' Notebook Runtime and entering the container image
-  `us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.6`. The
-  image has R-4.0.0 and the latest stable release Bioc 3.11.
+  `us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.10`. The
+  image has R-4.0.3 and the latest stable release Bioc 3.12.
 
 - [AnVIL][anvil:bioconductor] _R_ package for user- and
   developer-oriented AnVIL-specific functionality. Install with:
@@ -92,8 +92,8 @@ fail due to achived CRAN dependencies.
 
 Jupyter notebooks
 
-The images are based on _R_ version 3.6 and _Bioconductor_ version
-3.10.
+The images are based on _R_ version 4.0 and _Bioconductor_ version
+3.12.
 
 - [image][terra-jupyter-bioconductor:image],
   [github][terra-jupyter-bioconductor:github], _Bioconductor_
@@ -102,7 +102,7 @@ The images are based on _R_ version 3.6 and _Bioconductor_ version
 
 RStudio / _Bioconductor_
 
-The image now has R-4.0.0 and the latest stable release Bioc 3.11.
+The image now has R-4.0.3 and the latest stable release Bioc 3.12.
 
 - [image][anvil-rstudio-bioconductor:image],
   [github][anvil-rstudio-bioconductor:github].
@@ -267,7 +267,7 @@ _Kubernetes_
 [terra-jupyter-bioconductor:github]: https://github.com/DataBiosphere/terra-docker/tree/master/terra-jupyter-bioconductor
 [terra-jupyter-bioconductor:bioconductor]: https://github.com/Bioconductor/terra-docker
 
-[anvil-rstudio-bioconductor:image]: https://us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.8
+[anvil-rstudio-bioconductor:image]: https://us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.10
 [anvil-rstudio-bioconductor:github]: https://github.com/anvilproject/anvil-docker
 
 [Google Container Registry]: https://cloud.google.com/container-registry/docs/pushing-and-pulling
