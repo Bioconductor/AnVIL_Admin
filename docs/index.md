@@ -25,9 +25,15 @@ Learn more [about][] _Bioconductor_ and _AnVIL_.
 - _RStudio_ _R_ / _Bioconductor_
   ([image][anvil-rstudio-bioconductor:image],
   [github][anvil-rstudio-bioconductor:github]). Use by selecting a
-  'custom' Notebook Runtime and entering the container image
-  `us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.10`. The
+  'custom' Notebook Runtime and entering the selecting the RStudio image under 
+  `Community Maintained RStudio Environments (Verified Partners)`. The image 
+  is located at the link `us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor:0.0.10`. The
   image has R-4.0.3 and the latest stable release Bioc 3.12.
+  
+  You can also select 'Other Environments' and use our Bioconductor `devel` image. 
+  The image has the current Bioconductor `devel` version (3.13) and
+  appropriate R version 4.1. The image is located at 
+  `us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor-devel:3.13.0`
 
 - [AnVIL][anvil:bioconductor] _R_ package for user- and
   developer-oriented AnVIL-specific functionality. Install with:
